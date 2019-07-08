@@ -93,9 +93,14 @@ file = '/path/to/rom.gbc'
 with open(file, 'rb') as f:
     data = f.read()
 
-inst = gbparse.disas(data, start=0x0000, stop=0x7fff, max_depth=60)  # return disassembly of the ROM
-info = gbparse.parse(data)                                           # return the data in the cartridge header
-ropg = gbparse.gadgets(data, depth=5, repeats=False)                 # return a list of gadgets in the ROM
+# return disassembly of the ROM
+instructions = gbparse.disas(data, start=0x0000, stop=0x7fff, max_depth=60)
+
+# return the data in the cartridge header
+info = gbparse.parse(data)
+
+# return a list of gadgets in the ROM
+gadgets = gbparse.gadgets(data, depth=5, repeats=False)
 ```
 
 ## TODO
